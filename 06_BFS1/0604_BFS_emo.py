@@ -1,25 +1,22 @@
 from collections import deque
 
 def makeEmoji(start, end):
-    visited=[ [-1]*(end+1) for _ in range(end+2)]
+    visited=[ [-1]*(end+1) for _ in range(end+1)]
     q=deque()
     q.append((start,0,0))
 
     while(q):
         i,n,c =q.popleft()
-        if i<start or i> end+1:continue
+        if i<start or i> end:continue
         if i==end:
             print(n)
             break
 
         if visited[i][c]!=-1: continue
-        visited[i][c]=n
-
         q.append((i,n+1,i))
         q.append((i+c,n+1,c))
         q.append((i-1,n+1,c))
-    
-    
+
 def main():
     end=int(input())
     start=1
