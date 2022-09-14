@@ -1,6 +1,16 @@
 def main():
-    input()
-    return
+    n, remained= map(int, input().split())
+    coins=[]
+    for _ in range(n):
+        coins.append(int(input()))
+    cnt=0
+    for i in range(-1, -len(coins)-1,-1) :
+        c=remained//coins[i]
+        cnt+=c
+        remained-=c*coins[i]
+        if remained==0:
+            break
+    print(cnt)
 
 if __name__=="__main__":
     main()
