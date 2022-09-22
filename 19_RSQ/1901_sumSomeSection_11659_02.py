@@ -1,11 +1,18 @@
 import sys
-n, m = map(int, sys.stdin.readline().split())
-number = list(map(int, sys.stdin.readline().split()))
-sum_number = [0] * (n + 1)
-tmp = 0
-for i in range(n):
-    tmp += number[i]
-    sum_number[i+1] = tmp
-for _ in range(m):
-    a, b = map(int, sys.stdin.readline().split())
-    print(sum_number[b-1+1] - sum_number[a-1])
+def main():
+    input = sys.stdin.readline
+    N, M = map(int, input().rstrip().split())
+    arr = list(map(int, input().rstrip().split()))
+    arr_sum=[0]*(N+1)
+    arr_sum[0]=arr[0]
+    for i in range(1,N):
+        arr_sum[i]=arr_sum[i-1]+arr[i]
+    for i in range(M):
+        start,end=map(int, input().rstrip().split())
+        if start>1:
+            print(arr_sum[end-1]-arr_sum[start-2])
+        else :
+            print(arr_sum[end-1])
+
+if __name__=='__main__':
+    main()
